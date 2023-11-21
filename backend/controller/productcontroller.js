@@ -22,15 +22,17 @@ exports.createproduct = catchAsync(async (req, res, next) => {
 
 //get all products
 exports.getallproducts = catchAsync(async (req, res, next) => {
-  const count = Product.countDocuments();
+  const count = await Product.countDocuments();
   const resultperpage = 5;
   const apiFeatures = new ApiFeatures(Product.find(), req.query)
     .search()
     .filter()
     .pagination(resultperpage);
+  
   const data = await apiFeatures.query;
 
   // const data = await Product.find();
+  
 
   if (!data || data.length === 0) {
     let e = new Errorcreator(500, "not found || invalid id");

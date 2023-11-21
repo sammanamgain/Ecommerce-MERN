@@ -1,17 +1,17 @@
-const func=(x) => {
-    return (req, res, next) => {
-        x(req, res, next).catch(next);
-    }
-};
-module.exports = func;
+// const func=(x) => {
+//     return (req, res, next) => {
+//         x(req, res, next).catch(next);
+//     }
+// };
+// module.exports = func;
 
 
 //or
-// module.exports = func => {
-//   return (req, res, next) => {
-//     func(req, res, next).catch(next);
-//   };
-// };
+module.exports = func => {
+  return (req, res, next) => {
+    func(req, res, next).catch(next);
+  };
+};
 
 
 

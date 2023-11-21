@@ -4,6 +4,7 @@ class ApiFeatures {
     this.queryStr = queryStr;
   }
 
+
   search() {
     const keyword = this.queryStr.keyword
       ? {
@@ -31,14 +32,15 @@ class ApiFeatures {
   }
   pagination(pageresult) {
     const currentpage = Number(this.queryStr.page) || 1;
-    console.log(currentpage)
+  
     
     const skip = pageresult * (currentpage - 1);
-    console.log(skip)
+    
     this.query = this.query.limit(pageresult).skip(skip);
     return this;
     
   }
+  
 
 }
 module.exports = ApiFeatures;
