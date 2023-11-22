@@ -5,6 +5,7 @@ const ApiFeatures = require("../utils/apiFeatures.js");
 //create the product  admin
 exports.createproduct = catchAsync(async (req, res, next) => {
   console.log(req.body);
+  req.body.user = req.user.id;
 
   const data = await Product.create(req.body);
   if (!data) {
@@ -28,11 +29,10 @@ exports.getallproducts = catchAsync(async (req, res, next) => {
     .search()
     .filter()
     .pagination(resultperpage);
-  
+
   const data = await apiFeatures.query;
 
   // const data = await Product.find();
-  
 
   if (!data || data.length === 0) {
     let e = new Errorcreator(500, "not found || invalid id");

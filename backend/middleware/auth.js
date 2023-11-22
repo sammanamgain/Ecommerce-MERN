@@ -11,28 +11,27 @@ exports.isAuthenticatedUser = catchAsync(async (req, res, next) => {
   }
 
   const decodedData = jwt.verify(token, process.env.JWT_SECRET_KEY);
- 
+
   const user = await User.findById(decodedData.id);
- 
 
   req.user = user;
-  console.log(req.user.role);
+  console.log(req.user);
+  req.user.id = decodedData._id;
+
   //console.log(decodedData);
   next();
 });
 
 exports.authorizedroles = (...roles) => {
-  console.log(roles);
+//console.log(roles);
 
   return (req, res, next) => {
-    console.log(req.user.role);
-    if (req.user.role==undefined) {
-    
+    //console.log(req.user.role);
+    if (req.user.role == undefined) {
       next(new Error("404", "you are not allowed to access this route"));
-      }
-    else if(req.user.role=='user'){
-        next(new Error("403", "A normal user cannot access this route"));
-      }
+    } else if (req.user.role == "user") {
+      next(new Error("403", "A normal user cannot access this route"));
+    }
     next();
   };
 };
