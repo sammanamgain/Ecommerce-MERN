@@ -9,6 +9,7 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: [true, "pleae Enter the proudce description"],
   },
+  
   user: {
     type: mongoose.Schema.ObjectId,
     ref: "User",
