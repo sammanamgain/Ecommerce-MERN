@@ -4,7 +4,7 @@ const catchAsync = require("../middleware/catchAsync.js");
 const User = require("../Models/userModel.js");
 
 exports.isAuthenticatedUser = catchAsync(async (req, res, next) => {
-  console.log("dklkljdsjsdfdsljkfkljd");
+  //console.log("dklkljdsjsdfdsljkfkljd");
   const { token } = req.cookies;
   //console.log(token);
   if (!token) {
@@ -16,13 +16,16 @@ exports.isAuthenticatedUser = catchAsync(async (req, res, next) => {
   const user = await User.findById(decodedData.id);
 
   req.user = user;
-  console.log(req.user);
+  //console.log(req.user);
   req.user.id = decodedData._id;
 
   //console.log(decodedData);
   next();
 });
 
+
+
+//first yo middleware run hunxa without hitting that api routes also , then it returns anthother funciton which will be executed when middleware hits on that
 exports.authorizedroles = (...roles) => {
 //console.log(roles);
 

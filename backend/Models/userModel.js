@@ -56,7 +56,8 @@ userSchema.methods.getJWTToken = function () {
   });
 };
 userSchema.methods.comparePassword = async function (input_password) {
-  return bcryptjs.compare(input_password, this.password);
+ 
+  return  bcryptjs.compare(input_password, this.password);
 };
 userSchema.methods.getResetPasswordToken = async function () {
   //generating tokens
