@@ -131,7 +131,7 @@ exports.getproductReviews = catchAsync(async (req, res, next) => {
 
 //Delete a Review
 exports.deleteReview = catchAsync(async (req, res, next) => {
-  console.log("hi");
+ 
   const product = await Product.findById(req.query.productId);
   if (!product) {
     return next(new Error(404, "Prduct not found"));
@@ -152,15 +152,14 @@ exports.deleteReview = catchAsync(async (req, res, next) => {
     const ratings = avg / reviews.length;
   }
 
-  console.log(ratings);
-  console.log(reviews);
+ 
   const numofReviews = reviews.length;
   const data = await Product.findByIdAndUpdate(
     req.query.productId,
     { reviews, ratings, numofReviews },
     { new: true, runValidators: true, useFindAndModify: false }
   );
-  console.log(data);
+ 
   res.status(201).json({
     success: true,
   });
