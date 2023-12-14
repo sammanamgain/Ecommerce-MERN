@@ -27,7 +27,7 @@ exports.logIn = catchAsync(async (req, res, next) => {
     if (!user) {
         return next(new Errorcreator(401, "Invalid email or password"));
     }
-    console.log(user);
+
 
     const isPasswordMatched = await user.comparePassword(password);
 

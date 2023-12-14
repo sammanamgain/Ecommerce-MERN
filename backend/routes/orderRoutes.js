@@ -4,11 +4,12 @@ const { isAuthenticatedUser, authorizedroles } = require("../middleware/auth");
 const {
   newOrder,
   getOrder,
-  getuserOrder,
+  userorder
 } = require("../controller/orderController");
 router.route("/order/new").post(isAuthenticatedUser, newOrder);
+router.route("/order/user").get(isAuthenticatedUser, userorder);
 router
   .route("/order/:id")
-  .post(isAuthenticatedUser, authorizedroles("admin"), getOrder);
-router.route("/order/me").post(isAuthenticatedUser, getuserOrder);
+  .get(isAuthenticatedUser, authorizedroles("admin"), getOrder);
+
 module.exports = router;

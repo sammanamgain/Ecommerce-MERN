@@ -4,9 +4,9 @@ const catchAsync = require("../middleware/catchAsync.js");
 const User = require("../Models/userModel.js");
 
 exports.isAuthenticatedUser = catchAsync(async (req, res, next) => {
-  //console.log("dklkljdsjsdfdsljkfkljd");
+
   const { token } = req.cookies;
-  //console.log(token);
+
   if (!token) {
     return next(new Error(404, "please login to access this route"));
   }
@@ -16,10 +16,11 @@ exports.isAuthenticatedUser = catchAsync(async (req, res, next) => {
   const user = await User.findById(decodedData.id);
 
   req.user = user;
-  //console.log(req.user);
+
   req.user.id = decodedData._id;
 
-  //console.log(decodedData);
+  
+
   next();
 });
 

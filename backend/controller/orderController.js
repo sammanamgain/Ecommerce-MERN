@@ -33,10 +33,10 @@ exports.newOrder = catchAsync(async (req, res, next) => {
 });
 
 
-//get single order using the order id
+//get single order using the order id   --admin only
 exports.getOrder = catchAsync(async (req, res, next) => {
   //populate method will search in User database using linked userid and returns name and email
-  const orders = Orders.findById(req.params.id).populate("user", "name,email")
+  const orders = await Order.findById(req.params.id).populate("user", "name,email")
   if (!orders)
   {
     return new Errorcreator(400,"Orders Not Found")
@@ -48,9 +48,14 @@ exports.getOrder = catchAsync(async (req, res, next) => {
   })
 })
 
+
 //get order of user 
-exports.getuserOrder = catchAsync(async (req, res, next) => {
-  const orders = Orders.find({user:req.user.id})
+exports.userorder = catchAsync(async (req, res, next) => {
+  console.log(
+    "is this router called"
+  )
+  
+  const orders = await Order.find({user:req.user.id})
   if (!orders)
   {
     return new Errorcreator(400,"Orders Not Found")
@@ -61,3 +66,5 @@ exports.getuserOrder = catchAsync(async (req, res, next) => {
     orders
   })
 })
+
+
