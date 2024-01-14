@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaCartShopping } from "react-icons/fa6";
-import { ReactNavbar } from "overlay-navbar";
+
 import { Link } from "react-router-dom";
 import { IoCloseSharp } from "react-icons/io5";
 //import logo from "../../../images/logo.png";
