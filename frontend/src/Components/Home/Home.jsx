@@ -26,7 +26,15 @@ export default function Home() {
       <div className='flex justify-center items-center py-2  w-30 border-b-lime-600 '>
         <h1 className=' font-mono text-2xl border-b-4'> Featured Products</h1>
       </div>
-      <div>
+      <div className='flex md:flex-row flex-col items-center justify-center md:items-start md:justify-start flex-wrap md:ml-20 '>
+        <Product product={product} />
+        <Product product={product} />
+        <Product product={product} />
+        <Product product={product} />
+        <Product product={product} />
+        <Product product={product} />
+        <Product product={product} />
+        <Product product={product} />
         <Product product={product} />
       </div>
     </>

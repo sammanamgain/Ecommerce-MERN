@@ -3,26 +3,28 @@ import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
 
 export default function Product({ product }) {
-    const options = {
-        edit: false,
-        color: "rgba(20,20,20,0.1)",
-        size:window.innerWidth<600 ?20:25,
+  const options = {
+    edit: false,
+    color: "rgba(20,20,20,0.1)",
+    size: window.innerWidth < 600 ? 20 : 25,
 
-        activeColor: "tomato",
-        value: 2.5,
-        isHalf:true
-    }
+    activeColor: "tomato",
+    value: 2.5,
+    isHalf: true,
+  };
+
   return (
-    <Link to={product._id}>
+    <Link
+      to={product._id}
+      className='mb-10 md:px-8 w-[60vw] md:w-[38vw] lg:w-[18vw] flex flex-col justify-center items-start text-[rbg(68,68,68)] m-[2vmax] p-b-[2vh]  transition-all hover:shadow-xl hover:shadow-slate-200 hover:origin-top hover:-translate-y-3'
+    >
       <img src={product.images[0].url}></img>
-      <p> {product.name}</p>
-      <div>
+      <p className='py-1 text-3xl font-sans'> {product.name}</p>
+      <div className='flex items-center justify-center '>
         <ReactStars {...options}></ReactStars>
         <span>(256 Reviews)</span>
-          </div>
-          <span>
-              {product.price}
-          </span>
+      </div>
+      <span className='py-1 text-red-500'>RS.{product.price}</span>
     </Link>
   );
 }
