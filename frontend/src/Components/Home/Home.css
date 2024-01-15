@@ -1,6 +1,6 @@
 .banner {
     background-image: linear-gradient(to right, #635dc0, #3027ae);
-    height: 80vh;
+    height: 100vh;
     width: 100vw;
     text-align: center;
     display: flex;
@@ -11,27 +11,23 @@
 
 }
 
-.banner > h1 {
+.banner>h1 {
     margin: 5vmax;
     font: 600 2.5vmax "Roboto"
 }
-.banner > p{
-    font:300 1,4vmax "Lucida Sans"
-}
-.banner  a {
-    margin-bottom: 5vmax;
-    cursor: default ;
 
-    background-color: white;
-    border:5px solid white;
-    border-radius: 15px;
-    padding:1vmax;
-    transition: all 0.5s;
-    width: 9vmax;
-    font :500 1vmax "Roboto"
+.banner>p {
+    font: 300 1, 4vmax "Lucida Sans"
 }
-.banner a button{
 
-    font-size: 17px;
-    cursor: default;
+.banner ::after {
+    content: "";
+    width: 100vw;
+    height: 110vh;
+    background-color: #ffffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    clip-path: polygon(100% 68%, 0 100%, 100% 100%);
+    max-width: 100%;
 }
