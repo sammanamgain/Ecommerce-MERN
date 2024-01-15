@@ -5,24 +5,44 @@ import { FaCartShopping } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { IoCloseSharp } from "react-icons/io5";
 //import logo from "../../../images/logo.png";
-import clsx from 'clsx'
+import logo from "../../../assets/Image/logo.png";
+import clsx from "clsx";
 
 const Header = () => {
   const [sidemenu, setsidemenu] = useState(false);
   return (
     <main>
-      <nav className='flex justify-between px-8 items-center py-6 lg:px-24'>
-        <div className="flex items-center gap-8 ">
-        <section className='flex items-center gap-4'>
-          <GiHamburgerMenu className='text-3xl cursor-pointer lg:hidden' onClick={()=>setsidemenu(true)}></GiHamburgerMenu>
-          <Link className='text-4xl font-mono'>Logo</Link>
+      <nav className='flex justify-between px-8  items-center lg:py-4  lg:px-24'>
+        <div className='flex items-center gap-8 '>
+          <section className='flex items-center gap-4'>
+            <GiHamburgerMenu
+              className='text-3xl cursor-pointer lg:hidden'
+              onClick={() => setsidemenu(true)}
+            ></GiHamburgerMenu>
+            <Link className='text-4xl font-mono w-20'>
+              <img src={logo} alt='Logo'></img>
+            </Link>
           </section>
-          <Link className='text-grey-400 hover:text-black hidden lg:block'> Collections</Link>
-          <Link className='text-grey-400 hover:text-black hidden lg:block '> Collections</Link>
-          </div>
-        <div className={clsx("fixed h-full w-screen lg:hidden bg-black/50 backdrop-blur-sm top-0 right-0 -translate-x-full transition-all",sidemenu &&"translate-x-0" )}>
+          <Link className='text-grey-400 hover:text-black hidden lg:block'>
+            {" "}
+            Collections
+          </Link>
+          <Link className='text-grey-400 hover:text-black hidden lg:block '>
+            {" "}
+            Collections
+          </Link>
+        </div>
+        <div
+          className={clsx(
+            "fixed h-full w-screen lg:hidden bg-black/50 backdrop-blur-sm top-0 right-0 -translate-x-full transition-all",
+            sidemenu && "translate-x-0"
+          )}
+        >
           <section className='text-black bg-white flex-col absolute left-0 top-0 h-screen p-8 gap-8 z-50 w-56 flex'>
-            <IoCloseSharp className='mt-0 mb-8 text-3xl cursor-pointer' onClick={()=>setsidemenu(false)}></IoCloseSharp>
+            <IoCloseSharp
+              className='mt-0 mb-8 text-3xl cursor-pointer'
+              onClick={() => setsidemenu(false)}
+            ></IoCloseSharp>
             <Link className='font-bold '> Collections</Link>
             <Link className='font-bold '> Collections</Link>
             <Link className='font-bold '> Collections</Link>
@@ -41,7 +61,7 @@ const Header = () => {
           ></img>
         </section>
       </nav>
-      <hr className="lg:mx-24"/>
+      <hr className='lg:mx-24' />
     </main>
   );
 };

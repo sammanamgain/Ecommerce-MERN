@@ -13,7 +13,7 @@
 
 .banner>h1 {
     margin: 5vmax;
-    font: 600 2.5vmax "Roboto"
+    font: 600 2.5vmax "Sans"
 }
 
 .banner>p {
@@ -21,9 +21,9 @@
 }
 
 .banner ::after {
-    content: "";
+    content: "";;
     width: 100vw;
-    height: 110vh;
+    height: 111vh;
     background-color: #ffffffff;
     position: absolute;
     top: 0;
