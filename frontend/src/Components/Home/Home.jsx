@@ -1,21 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CgMouse } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import Product from "./Product";
+import Metadata from "../layout/Header/Metadata";
+import { getProduct } from "../../actions/productactions";
+import { useSelector, useDispatch } from "react-redux";
 export default function Home() {
-  const product = {
-    name: "shirt",
-    price: "10000",
-    _id: "samman",
-    images: [
-      {
-        url: "https://i2.wp.com/www.marknepal.com/wp-content/uploads/2019/09/IMG-6bd6b5be52c5c7cdc20af3b0ff60099f-V.jpg?fit=1280%2C1280&ssl=1",
-      },
-    ],
-  };
+  const dispatch = useDispatch();
+  const { product, loading, error } = useSelector((state) => state.product);
+  useEffect(() => {
+    dispatch(getProduct());
+  }, [dispatch]);
   return (
     <>
+      <Metadata title='samman'></Metadata>
       <div className='banner '>
         <p className='text-2xl'> Welcome to Ecommerce</p>
         <h1> FIND AMAZING PROUDCTS BELOW</h1>
@@ -35,15 +34,7 @@ export default function Home() {
           className='flex md:flex-row flex-col items-center justify-center md:items-start md:justify-start flex-wrap md:ml-20 '
           id='Homeproduct'
         >
-          <Product product={product} />
-          <Product product={product} />
-          <Product product={product} />
-          <Product product={product} />
-          <Product product={product} />
-          <Product product={product} />
-          <Product product={product} />
-          <Product product={product} />
-          <Product product={product} />
+          {product && product.map((item) => <Product key={ item._id} product={item} />)}
         </div>
       </div>
     </>

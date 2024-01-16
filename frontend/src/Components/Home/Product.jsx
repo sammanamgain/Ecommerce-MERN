@@ -18,8 +18,9 @@ export default function Product({ product }) {
       to={product._id}
       className='mb-10 md:px-8 w-[60vw] md:w-[38vw] lg:w-[18vw] flex flex-col justify-center items-start text-[rbg(68,68,68)] m-[2vmax] p-b-[2vh]  transition-all hover:shadow-xl hover:shadow-slate-200 hover:origin-top hover:-translate-y-3'
     >
-      <img src={product.images[0].url}></img>
+      <img className="h-[200px] bg-cover overflow-hidden " src={product.images[0].url}></img>
       <p className='py-1 text-3xl font-sans'> {product.name}</p>
+      <p>{product.description}</p>
       <div className='flex items-center justify-center '>
         <ReactStars {...options}></ReactStars>
         <span>(256 Reviews)</span>
