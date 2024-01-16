@@ -9,7 +9,7 @@ export default function Product({ product }) {
     size: window.innerWidth < 600 ? 20 : 25,
 
     activeColor: "tomato",
-    value: 2.5,
+    value: product.ratings,
     isHalf: true,
   };
 
@@ -23,7 +23,7 @@ export default function Product({ product }) {
       <p>{product.description}</p>
       <div className='flex items-center justify-center '>
         <ReactStars {...options}></ReactStars>
-        <span>(256 Reviews)</span>
+        <span>({product.numofReviews})</span>
       </div>
       <span className='py-1 text-red-500'>RS.{product.price}</span>
     </Link>
