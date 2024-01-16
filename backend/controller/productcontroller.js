@@ -23,8 +23,9 @@ exports.createproduct = catchAsync(async (req, res, next) => {
 
 //get all products
 exports.getallproducts = catchAsync(async (req, res, next) => {
+  console.log("request comes in ......");
   const count = await Product.countDocuments();
-  const resultperpage = 5;
+  const resultperpage = 8;
   const apiFeatures = new ApiFeatures(Product.find(), req.query)
     .search()
     .filter()
@@ -131,7 +132,6 @@ exports.getproductReviews = catchAsync(async (req, res, next) => {
 
 //Delete a Review
 exports.deleteReview = catchAsync(async (req, res, next) => {
- 
   const product = await Product.findById(req.query.productId);
   if (!product) {
     return next(new Error(404, "Prduct not found"));
@@ -152,14 +152,13 @@ exports.deleteReview = catchAsync(async (req, res, next) => {
     const ratings = avg / reviews.length;
   }
 
- 
   const numofReviews = reviews.length;
   const data = await Product.findByIdAndUpdate(
     req.query.productId,
     { reviews, ratings, numofReviews },
     { new: true, runValidators: true, useFindAndModify: false }
   );
- 
+
   res.status(201).json({
     success: true,
   });
