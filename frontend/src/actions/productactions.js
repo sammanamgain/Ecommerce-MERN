@@ -28,16 +28,17 @@ export const getProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
     const { data } = await axios.get(
-      `localhost:5000/api/v1/product/{id}`
+      `http://localhost:5000/api/v1/product/${id}`
     );
-    console.log(data);
+    console.log("printing the  message");
+    console.log(data.messgae);
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
-      payload: data.product,
+      payload: data,
     });
   } catch (e) {
     dispatch({
-      type: PRODUCT_DETAILS_FAIL ,
+      type: PRODUCT_DETAILS_FAIL,
       payload: e.response.data.message,
     });
   }

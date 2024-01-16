@@ -44,9 +44,11 @@ export const productDetailsreducer = (state = { products: {} }, action) => {
         ...state,
       };
     case PRODUCT_DETAILS_SUCCESS:
+      console.log("inside reducer");
+      console.log(action.payload);
       return {
         loading: false,
-        product: action.payload,
+        products: action.payload,
       };
     case PRODUCT_DETAILS_FAIL:
       return {

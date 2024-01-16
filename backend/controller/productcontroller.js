@@ -71,7 +71,9 @@ exports.deleteproduct = catchAsync(async (req, res, next) => {
 
 //get a single product
 exports.getSingleProduct = catchAsync(async (req, res, next) => {
+  
   let id = req.params.id;
+  console.log(id);
   const singledata = await Product.findById(id);
   if (!singledata) {
     let e = new Errorcreator(500, "not found");
