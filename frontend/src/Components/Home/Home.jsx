@@ -7,12 +7,20 @@ import Metadata from "../layout/Header/Metadata";
 import { getProduct } from "../../actions/productactions";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../Loader/Loader";
+import { useAlert } from "react-alert"
 export default function Home() {
+  const alert = useAlert();
   const dispatch = useDispatch();
   const { product, loading, error } = useSelector((state) => state.product);
   useEffect(() => {
+    if (error) {
+      return alert.error(error)
+    }
     dispatch(getProduct());
-  }, [dispatch]);
+  }, [dispatch,error]);
+
+
+  useAlert
   return (
     <>
       {" "}
