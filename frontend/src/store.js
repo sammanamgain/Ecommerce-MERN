@@ -1,10 +1,11 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { thunk } from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { productreducer } from "./reducers/productreducer";
+import { productreducer,productDetailsreducer } from "./reducers/productreducer";
 
 const reducer = combineReducers({
-  product:productreducer
+  product: productreducer,
+  productDetails:productDetailsreducer
 });
 let initialState = {}; // Corrected the typo in variable name
 const middleware = [thunk];
