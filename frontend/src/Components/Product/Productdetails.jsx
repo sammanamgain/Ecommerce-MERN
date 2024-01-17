@@ -1,37 +1,43 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import { useSelector, useDispatch } from "react-redux";
 import { getProductDetails } from "../../actions/productactions";
 import { useParams } from "react-router-dom";
+import Loader from "../Loader/Loader";
+
 export default function Productdetails() {
+  //let [loading1, setloading] = useState(true);
   const { id } = useParams();
-  //console.log(id);
   const dispatch = useDispatch();
 
-  //console.log(products);
   useEffect(() => {
     console.log("use effect ran");
     dispatch(getProductDetails(id));
-  }, [dispatch, id]);
+  }, []);
 
-  const { products, loading, error } = useSelector(
+  let { loading, products, error } = useSelector(
     (state) => state.productDetails
   );
+
   console.log("printing the state");
-  console.log(products.messgae.images);
+  console.log(loading, products, error);
 
   return (
     <>
-      <div>
+      {!loading ? (
         <div>
-          <Carousel>
-            {products.messgae.images &&
-              products.messgae.images.map((item, index) => (
-                <img key={index} src={item.url}></img>
-              ))}
-          </Carousel>
+          <div>
+            <Carousel>
+              {products &&
+                products.images.map((item, index) => (
+                  <img key={index} src={item.url} alt={`Product ${index}`} />
+                ))}
+            </Carousel>
+          </div>
         </div>
-      </div>
+      ) : (
+        <Loader />
+      )}
     </>
   );
 }
