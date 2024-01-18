@@ -29,6 +29,7 @@
     "mongoose": "^8.0.0",
     "nodemailer": "^6.9.7",
     "nodemon": "^3.0.2",
+    "upgrade": "^1.1.0",
     "validator": "^13.11.0"
   }
 }

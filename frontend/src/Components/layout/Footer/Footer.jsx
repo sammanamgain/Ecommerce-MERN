@@ -4,9 +4,10 @@ import { FaTwitter } from "react-icons/fa6";
 import { AiFillInstagram } from "react-icons/ai";
 import { IoLogoGooglePlaystore } from "react-icons/io5";
 import { IoLogoAppleAppstore } from "react-icons/io5";
+import './Footer.css'
 export default function Footer() {
   return (
-    <div className='  left-0 bottom-0 w-full bg-black text-white flex  gap-2 lg:gap-10 lg:justify-around pt-5 pb-2'>
+    <div className='footer   w-full bg-black text-white flex  gap-2 lg:gap-10 lg:justify-around pt-5 pb-2 '>
       <div className="flex flex-col gap-2">
         <h1>Amgain Ecommerce</h1>
         <div className='flex gap-6'>
